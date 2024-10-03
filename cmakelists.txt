@@ -1,0 +1,207 @@
+# ----------------------------------------------------------------------------------------
+#   General
+# ----------------------------------------------------------------------------------------
+cmake_minimum_required(VERSION 3.29)
+project(iLLD_TC39B)
+
+# ----------------------------------------------------------------------------------------
+#   Settings
+# ----------------------------------------------------------------------------------------
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
+# ----------------------------------------------------------------------------------------
+#   Src / Inc
+# ----------------------------------------------------------------------------------------
+file(GLOB_RECURSE files_src ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
+file(GLOB_RECURSE files_inc ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
+
+# ----------------------------------------------------------------------------------------
+#   Target 
+# ----------------------------------------------------------------------------------------
+add_library(${PROJECT_NAME} STATIC ${files_src} ${files_inc})
+
+# ----------------------------------------------------------------------------------------
+#   Target Setting
+# ----------------------------------------------------------------------------------------
+set_property(TARGET ${PROJECT_NAME} PROPERTY PREFIX "lib_")
+set_property(TARGET ${PROJECT_NAME} PROPERTY SUFFIX ".a")
+
+# ----------------------------------------------------------------------------------------
+#   Include - Infrastructure
+# ----------------------------------------------------------------------------------------
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Platform)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Platform/Tricore)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Platform/Tricore/Compilers)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Sfr)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Sfr/TC39B)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Sfr/TC39B/_Reg)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Ssw)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Ssw/TC39B)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Infra/Ssw/TC39B/Tricore)
+
+# ----------------------------------------------------------------------------------------
+#   Include - iLLD
+# ----------------------------------------------------------------------------------------
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/_Impl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/_Lib)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/_Lib/DataHandling)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/_Lib/InternalMux)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/_PinMap)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Asclin)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Asclin/Asc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Asclin/Lin)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Asclin/Spi)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Asclin/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Can)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Can/Can)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Can/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/Icu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/PwmBc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/PwmHl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/Timer)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/TimerWithTrigger)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ccu6/TPwm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Convctrl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Convctrl/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Cpu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Cpu/Irq)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Cpu/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Cpu/Trap)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Dma)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Dma/Dma)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Dma/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Dts)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Dts/Dts)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Dts/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ebu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ebu/BFlashSpansion)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ebu/BFlashSt)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ebu/Dram)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ebu/Sram)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Ebu/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Edsadc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Edsadc/Edsadc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Edsadc/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Emem)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Emem/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Eray)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Eray/Eray)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Eray/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Evadc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Evadc/Adc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Evadc/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Fce)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Fce/Crc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Fce/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Flash)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Flash/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Geth)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Geth/Eth)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Geth/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gpt12)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gpt12/IncrEnc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gpt12/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Atom)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Atom/Dtm_PwmHl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Atom/Pwm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Atom/PwmHl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Atom/Timer)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tim)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tim/In)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tim/Timer)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tom)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tom/Dtm_PwmHl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tom/Pwm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tom/PwmHl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Tom/Timer)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Gtm/Trig)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Hspdm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Hspdm/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Hssl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Hssl/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Hssl/Hssl)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/I2c)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/I2c/I2c)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/I2c/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Iom)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Iom/Driver)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Iom/Iom)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Iom/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Msc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Msc/Msc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Msc/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Mtu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Mtu/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Pms)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Pms/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Port)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Port/Io)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Port/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Psi5)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Psi5/Psi5)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Psi5/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Psi5s)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Psi5s/Psi5s)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Psi5s/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Qspi)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Qspi/SpiMaster)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Qspi/SpiSlave)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Qspi/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Rif)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Rif/Rif)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Rif/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Scu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Scu/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sdmmc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sdmmc/Emmc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sdmmc/Sd)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sdmmc/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sent)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sent/Sent)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Sent/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Smu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Smu/Smu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Smu/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Spu)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Spu/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Src)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Src/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Stm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Stm/Std)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/iLLD/TC39B/Tricore/Stm/Timer)
+
+# ----------------------------------------------------------------------------------------
+#   Include - Service
+# ----------------------------------------------------------------------------------------
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/_Utilities)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/If)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/If/Ccu6If)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/StdIf)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/SysSe)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/SysSe/Bsp)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/SysSe/Comm)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/SysSe/General)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/SysSe/Math)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src/BaseSw/Service/CpuGeneric/SysSe/Time)
+
+# ----------------------------------------------------------------------------------------
+#   Target Specific
+# ----------------------------------------------------------------------------------------
+# Note: Have to be replaced with real configurations for the project
+if(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+    target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/stub)
+endif(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+
+# ----------------------------------------------------------------------------------------
+#   End File
+# ----------------------------------------------------------------------------------------
